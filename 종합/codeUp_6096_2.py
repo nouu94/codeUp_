@@ -33,52 +33,39 @@ for i in range(n) :
 리스트이름[번호][번호] 형식으로 저장되어있는 값을 읽고 쓸 수 있다.
 '''
 
-# d = []
+checkerboard = []
 
-# for i in range(19):  # 가로 줄의 길이
-#     d.append([])
-#     for j in range(19):  # 세로 줄의 길이
-#         lst = map(int, input().split())
-#         d[i].extend(lst)
-# print(lst)
-
-# for i in range(20):
-#     d.append([])
-#     # print(d)
-#     for j in range(20):
-#         d[i].append(0)  # 리스트 안에 들어있는 리스트 안에 0 추가해 넣기
-
-p = []
-
-for i in range(20):
-    p.append([])
-    for j in range(20):
-        p[i].append(0)
-
-
+# 영일이가 바둑판에 검정(0), 흰(1) 바둑알을 바둑판에 꽉 채웠어요.
 for i in range(19):
-    a = input().split()
-    for j in range(19):
-        p[i+1][j+1] = int(a[j])
+    checkerboard_line = list(map(int, input().split()))
+    checkerboard.append(checkerboard_line)
+# print(checkerboard)
 
+# 바둑판을 출력합시다.
+# for i in range(19):
+#     for j in range(19):
+#         print(checkerboard[i][j], end=' ')
+#     print()
+
+# n개의 좌표를 입력합니다.
 n = int(input())
-for i in range(n):
+
+for _ in range(n):
+    # n개의 좌표 만큼
     x, y = map(int, input().split())
-    for j in range(1, 20):
-        if p[j][y] == 0:
-            p[j][y] = 1
-        else:
-            p[j][y] = 0
+    for j in range(19):
+        if checkerboard[j][x-1] == 0:
+            checkerboard[j][x-1] = 1
+        elif checkerboard[j][x-1] == 1:
+            checkerboard[j][x-1] = 0
 
-        if p[x][j] == 0:
-            p[x][j] = 1
-        else:
-            p[x][j] = 0
+        if checkerboard[y-1][j] == 0:
+            checkerboard[y-1][j] = 1
+        elif checkerboard[y-1][j] == 1:
+            checkerboard[y-1][j] = 0
 
-
-# print()
-
-for i in range(1, 20):
-    for j in range(1, 20):
-        print(p[i][j], end=' ')
+# 좌표가 반영 된 바둑 판을 출력합니다.
+for i in range(19):
+    for j in range(19):
+        print(checkerboard[i][j], end=' ')
     print()

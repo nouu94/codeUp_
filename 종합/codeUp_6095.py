@@ -46,42 +46,35 @@ d = [[0 for j in range(20)] for i in range(20)]
 이러한 리스트 생성 방식을 List Comprehensions 라고 한다.
 
 '''
+'''
+checkerboard = []
+for i in range(20) : 
+  checkerboard.append([])
+  for j in range(20) : 
+    checkerboard[i].append(0)
+'''
+# 바둑판 생성
+checkerboard = []
+checkerboard = [[0 for _ in range(20)]
+                for _ in range(20)]
 
-# n = int(input())  # 개수를 입력받아 n에 정수로 저장
-# a = list(map(int, input().split()))  # 공백을 기준으로 잘라 a에 순서대로 저장
-
-d = []
-for i in range(20):
-    d.append([])
-    # print(d)
-    for j in range(20):
-        d[i].append(0)  # 리스트 안에 들어있는 리스트 안에 0 추가해 넣기
-
-
+# 바둑판에 올려 놓을 흰 돌의 개수(n)가 첫 줄에 입력된다.
 n = int(input())
-for i in range(n):
+
+'''
+리스트가 들어있는 리스트를 만들면?
+가로번호, 세로번호를 사용해 2차원 형태의 데이터처럼 쉽게 기록하고 사용할 수 있다.
+리스트이름[번호][번호] 형식으로 저장되어있는 값을 읽고 쓸 수 있고, 더 확장한 n차원의 리스트도 만들 수 있다.
+'''
+
+for i in range(1, n + 1):
+    # 둘째 줄 부터 n+1 번째 줄까지 힌 돌을 놓을 좌표(x, y)가 n줄 입력된다.
     x, y = map(int, input().split())
-    d[x][y] = 1
+    # 해당 2차원 리스트 인덱스에 1을 부여한다.
+    checkerboard[x][y] = 1
 
-
+# 1이 부여 된 바둑판 출력
 for i in range(1, 20):
     for j in range(1, 20):
-        print(d[i][j], end=' ')  # 공백을 두고 한 줄로 출력한다.
+        print(checkerboard[i][j], end=' ')
     print()
-
-
-# d = []  # 대괄호 [ ] 를 이용해 아무것도 없는 빈 리스트 만들기
-# for i in range(20):
-#     d.append([])  # 리스트 안에 다른 리스트 추가해 넣기
-#     for j in range(20):
-#         d[i].append(0)  # 리스트 안에 들어있는 리스트 안에 0 추가해 넣기
-
-# n = int(input())
-# for i in range(n):
-#     x, y = input().split()
-#     d[int(x)][int(y)] = 1
-
-# for i in range(1, 20):
-#     for j in range(1, 20):
-#         print(d[i][j], end=' ')  # 공백을 두고 한 줄로 출력
-#     print()  # 줄 바꿈
